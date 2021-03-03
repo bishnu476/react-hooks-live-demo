@@ -2,6 +2,9 @@ import React, {Component} from "react"
 import logo from "./logo.svg"
 import "./App.css"
 import AdSense from 'react-adsense';
+import {BrowserRouter, Route, Switch} from 'react-router-dom';
+import ClassMouse from "./components/classComponent/ClassMouse";
+import HookComponentWillUnmount from "./components/hookComponent/useEffect/hookComponentWillUnmount";
 
 class LambdaDemo extends Component {
     constructor(props) {
@@ -45,15 +48,26 @@ class LambdaDemo extends Component {
 class App extends Component {
     render() {
         return (
-            <div className="App">
-                <header className="App-header">
-                    <img src={logo} className="App-logo" alt="logo"/>
-                    <p>
-                        Edit <code>src/App.js</code> and save to reload.
-                    </p>
-                    <LambdaDemo/>
-                </header>
-            </div>
+            <>
+                <div className="App">
+                    <header className="App-header">
+                        <BrowserRouter>
+                            <Switch>
+                                {/*<Route component={DemoComponent} path="/table"/>*/}
+
+                                <Route component={ClassMouse} path="/"/>
+
+                                {/* eslint-disable-next-line no-undef */}
+                                <Route component={HookComponentWillUnmount} path="/mouse"/>
+                            </Switch>
+                        </BrowserRouter>
+                        <LambdaDemo/>
+                    </header>
+                </div>
+
+
+            </>
+
         )
     }
 }
